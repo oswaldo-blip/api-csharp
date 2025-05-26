@@ -1,0 +1,311 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/images/favicon.ico' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+
+    <!-- Font Awesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+
+    <title>Sowknet</title>
+  </head>
+
+
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/681ad679062127190b81ea35/1iqkdbipe';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  
+  <body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <img src="{% static 'core/images/logo_3.png' %}" alt="Logo sownet" class="img-fluid" style="max-height: 80px;">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#menu-principal" aria-controls="menu-principal" 
+      aria-expanded="false" aria-label="Desplegar menú de navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu-principal">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'index' %}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'nosotros' %}">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'contenido' %}">Contenido</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'foro' %}">Foro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'encuesta' %}">Encuesta</a>
+        </li>
+        {% if user.is_authenticated %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'logout-link' %}" style="color: blue; text-decoration: underline;">Cerrar sesión</a>
+</li>
+{% else %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'login' %}" style="color: blue; text-decoration: underline;">Iniciar sesión</a>
+</li>
+{% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- CARRUSEL -->
+<div class="container" style="margin-top: 150px;">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+    
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+
+      <!-- Slide 1 con enlace -->
+      <div class="carousel-item active position-relative">
+        <img src="{% static 'core/images/correcto_2.jpeg' %}" class="d-block w-100" alt="slider 2">
+          <div class="position-absolute top-50 start-50 translate-middle text-center bg-dark bg-opacity-10 p-4 rounded">
+    <h5 class="text-white">El impacto de las redes en la salud mental de los adolecentes.</h5>
+    <p class="text-white">Lee más en el sitio de psicoactiva.</p>
+    <a href="https://www.psicoactiva.com/blog/redes-sociales-y-salud-mental/" target="_blank" class="btn btn-primary">Ir</a>
+  </div>
+      </div>
+
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="{% static 'core/images/correcto_3.jpg' %}" class="d-block w-100" alt="slider 3">
+          <div class="position-absolute top-50 start-50 translate-middle text-center bg-dark bg-opacity-10 p-4 rounded">
+    <h5 class="text-white">Impacto positivo y negativo de las redes sociales.</h5>
+    <p class="text-white">Da clic y lee más en el sitio.</p>
+    <a href="https://psicologiaymente.com/psicologia/impacto-positivo-negativo-redes-sociales-salud-mental" target="_blank" class="btn btn-primary">Ir</a>
+  </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+  <img src="{% static 'core/images/correcto_1.jpeg' %}" class="d-block w-100" alt="OMS">
+
+  <!-- Contenedor centrado -->
+  <div class="position-absolute top-50 start-50 translate-middle text-center bg-dark bg-opacity-10 p-4 rounded">
+    <h5 class="text-white">Adolescentes y Redes Sociales, block abordado por expertos sobre temas de redes sociales y salud mental.</h5>
+    <p class="text-white">Lee más en el sitio de UNICEF sobre salud mental y jóvenes.</p>
+    <br>
+    <br>
+    <br>
+    <a href="https://www.unicef.org/parenting/es/salud-mental/adolescentes-y-redes-sociales" target="_blank" class="btn btn-primary">Ir</a>
+  </div>
+</div>
+
+    </div>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+</div>
+
+
+
+<!-- SECCION QUIENES SOMOS-->
+ <br id="1">
+<section class="Quienes-somos py-5 mt-5 pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 text-center">
+        <img src="{% static 'core/images/imagen principal.png' %}" alt="Somos los desarroladores"
+        class="img-fluid" mb-4 mb-md-0>
+      </div>
+      <div class="col-12 col-md-6 text-center text-md-start align-self-md-center">
+        <h1 class="display-4 font-weight-bold text-primary"> BIENVENIDO</h1>
+        <p style="text-align: justify;">Te damos la bienvenida a este espacio creado especialmente para ti, donde exploramos el impacto de las redes sociales en la salud mental de los jóvenes.
+
+          En un mundo cada vez más digital, es fundamental detenernos a reflexionar sobre cómo nos afecta lo que vemos, compartimos y sentimos en línea. Aquí encontrarás artículos, recursos, consejos y testimonios que buscan informar, acompañar y apoyar a quienes desean tener una relación más saludable con el mundo digital.
+          
+          </p>
+           <a href="#" class="btn btn-primary btn-lg">Leer mas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PIE DE PÁGINA -->
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-primary text-white">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset text-white">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset text-white">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset text-white">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset text-white">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset text-white">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset text-white">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Company name
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset text-white">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset text-white">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset text-white">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset text-white">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset text-white">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset text-white">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset text-white">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset text-white">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.15);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+    
+    <!--ARCHIVOS BOOTSTRAP JAVASCRIP-->
+<script src="{% static 'core/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'core/js/popper.min.js' %}"></script>
+<script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

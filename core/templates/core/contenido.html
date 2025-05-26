@@ -1,0 +1,137 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/images/favicon.ico' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+
+    <title>Sowknet</title>
+  </head>
+
+  <body>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/681ad679062127190b81ea35/1iqkdbipe';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
+      <div class="container">
+        <a href="{% url 'index' %}" class="navbar-brand">
+          <img src="{% static 'core/images/logo_3.png' %}" alt="Logo sowknet" class="img-fluid" style="max-height: 80px;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="{% url 'nosotros' %}" class="nav-link">Nosotros</a></li>
+            <li class="nav-item"><a href="{% url 'contenido' %}" class="nav-link">Contenido</a></li>
+            <li class="nav-item"><a href="{% url 'foro' %}" class="nav-link">Foro</a></li>
+            <li class="nav-item"><a href="{% url 'encuesta' %}" class="nav-link">Encuesta</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- PROYECTOS -->
+     <br>
+     <br>
+     <br>
+    <section class="Proyectos py-5 mt-5">
+      <div class="container">
+        <h1 class="display-4 font-weight-bold text-center text-primary pb-4">Contenido</h1>
+        <div class="row text-md-center">
+
+          <!-- Proyecto 1 -->
+          <article class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+              <img src="{% static 'core/images/proyecto_1.png' %}" class="card-img-top" alt="proyecto1">
+              <div class="card-body">
+                <h5 class="card-title">🧠 Entendiendo el Impacto</h5>
+                <p class="card-text">Información clara sobre cómo las redes sociales afectan la salud mental de los jóvenes. Incluye ansiedad, autoestima, ciberacoso y más.</p>
+                <a href="#" class="btn btn-primary">Visitar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+              <img src="{% static 'core/images/proyecto_2.png' %}" class="card-img-top" alt="proyecto2">
+              <div class="card-body">
+                <h5 class="card-title">💬 Voces Reales</h5>
+                <p class="card-text">Testimonios sinceros de jóvenes sobre su experiencia con redes sociales y cómo encontraron formas más saludables de usarlas.</p>
+                <a href="#" class="btn btn-primary">Visitar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+              <img src="{% static 'core/images/proyecto_3.jpg' %}" class="card-img-top" alt="proyecto3">
+              <div class="card-body">
+                <h5 class="card-title">🛠️ Recursos y Consejos</h5>
+                <p class="card-text">Herramientas prácticas para equilibrar tu vida digital: límites, guías y ayuda profesional para cuidar tu bienestar emocional.</p>
+                <a href="#" class="btn btn-primary">Visitar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 4 -->
+          <article class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card h-100">
+              <img src="{% static 'core/images/proyecto_4.jpg' %}" class="card-img-top" alt="proyecto4">
+              <div class="card-body">
+                <h5 class="card-title">🌱 Crea tu Bienestar</h5>
+                <p class="card-text">Retos, ejercicios y participación comunitaria para mejorar tu relación con el mundo digital.</p>
+                <a href="#" class="btn btn-primary">Visitar</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-de-pagina text-center text-md-start bg-dark text-white mt-5">
+      <div class="container">
+        <p class="m-0 py-3">Copyright © 2025. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'core/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'core/js/popper.min.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

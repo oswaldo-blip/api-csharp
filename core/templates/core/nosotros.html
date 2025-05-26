@@ -1,0 +1,126 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/images/favicon.ico' %}">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+
+  <title>Sowknet | Nosotros</title>
+</head>
+
+<body>
+
+<!-- Tawk.to chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/681ad679062127190b81ea35/1iqkdbipe';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
+  <div class="container">
+    <a href="{% url 'index' %}" class="navbar-brand">
+      <img src="{% static 'core/images/logo_3.png' %}" alt="Logo Sownet" class="img-fluid" style="max-height: 80px;">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu-principal">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Inicio</a></li>
+        <li class="nav-item"><a href="{% url 'nosotros' %}" class="nav-link">Nosotros</a></li>
+        <li class="nav-item"><a href="{% url 'contenido' %}" class="nav-link">Contenido</a></li>
+        <li class="nav-item"><a href="{% url 'foro' %}" class="nav-link">Foro</a></li>
+        <li class="nav-item"><a href="{% url 'encuesta' %}" class="nav-link">Encuesta</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- SECCIÓN FILOSOFÍA -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Imagen fuera del fondo morado -->
+<div class="text-center">
+  <img src="{% static 'core/images/imagen_2.jpg' %}" width="260" alt="Avatar" class="img-fluid rounded-circle mb-4">
+</div>
+
+<!-- Contenido con fondo morado inicia aquí -->
+<div class="bg-primary text-white text-center py-5">
+  <div class="container">
+
+    <div class="row mt-5 mb-5">
+      <div class="col-md-6">
+        <h3 class="mb-3">Misión</h3>
+        <p class="text-white text-justify">
+          Promover el bienestar emocional y mental mediante el uso consciente y saludable de las redes sociales, ofreciendo orientación basada en investigaciones actuales y estrategias prácticas que fortalezcan la autoestima y el autocuidado en entornos digitales.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="mb-3">Visión</h3>
+        <p class="text-white text-justify">
+          Ser un referente en educación digital, impactando positivamente en la vida de las personas al fomentar el uso responsable de las plataformas sociales y fortaleciendo su salud mental frente a los retos de la era tecnológica.
+        </p>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <h3 class="mb-3">Valores</h3>
+        <p class="text-white text-justify">
+          <strong>Empatía:</strong> Entendemos las emociones de quienes enfrentan retos digitales.<br>
+          <strong>Responsabilidad:</strong> Promovemos el uso consciente de la tecnología.<br>
+          <strong>Respeto:</strong> Valoramos la diversidad y las experiencias de cada persona.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="mb-3">Objetivo</h3>
+        <p class="text-white text-justify">
+          Sensibilizar, educar y empoderar a los usuarios para reconocer los efectos de las redes sociales en su salud mental, brindándoles estrategias y recursos que les permitan desarrollar una relación equilibrada con el entorno digital.
+        </p>
+      </div>
+    </div>
+
+    <p class="h4 fst-italic mt-4">- Tu voz importa, tu salud mental también.</p>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="pie-de-pagina text-center text-md-start bg-dark text-white mt-5">
+  <div class="container">
+    <p class="m-0 py-3">Copyright © 2025. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- JS BOOTSTRAP -->
+<script src="{% static 'core/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'core/js/popper.min.js' %}"></script>
+<script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

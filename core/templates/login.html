@@ -1,0 +1,106 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/images/favicon.ico' %}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+
+    <title>Sowknet</title>
+  </head>
+
+ <body style="background-color: #9c9cda;" class="d-flex justify-content-center align-items-center vh-100">
+
+<!-- NAVBAR SOLO CON LOGOTIPO -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <img src="{% static 'core/images/logo_3.png' %}" alt="Logo sownet" class="img-fluid" style="max-height: 80px;">
+    </a>
+  </div>
+</nav>
+
+    <!--INICIO DE SECION-->
+    <div class="bg-white p-5 rounded-5 text-secondary shadow" style="width: 25rem">
+      <div class="d-flex justify-content-center">
+        <img
+          src="{% static 'core/images/login-icon.svg' %}"
+          alt="login-icon"
+          style="height: 7rem"
+        />
+      </div>
+      <div class="text-center fs-1 fw-bold">Login</div>
+
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="input-group mt-4">
+          <div class="input-group-text bg-info">
+            <img
+              src="{% static 'core/images/username-icon.svg' %}"
+              alt="username-icon"
+              style="height: 1rem"
+            />
+          </div>
+          <input
+            class="form-control bg-light"
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          />
+        </div>
+
+        <div class="input-group mt-3">
+          <div class="input-group-text bg-info">
+            <img
+              src="{% static 'core/images/password-icon.svg' %}"
+              alt="password-icon"
+              style="height: 1rem"
+            />
+          </div>
+          <input
+            class="form-control bg-light"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+
+        {% if form.errors %}
+          <div class="alert alert-danger mt-3">Usuario o contraseña incorrectos.</div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
+          Iniciar Sesión
+        </button>
+      </form>
+
+      <div class="d-flex gap-1 justify-content-center mt-3">
+        <div>¿No tienes cuenta?</div>
+        <a href="#" class="text-decoration-none text-info fw-semibold">Regístrate</a>
+      </div>
+    </div>
+
+
+ <!--ARCHIVOS BOOTSTRAP JAVASCRIP-->
+<script src="{% static 'core/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'core/js/popper.min.js' %}"></script>
+<script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>
