@@ -45,52 +45,79 @@
   <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
-  <div class="container">
-    <a href="#" class="navbar-brand">
-      <img src="{% static 'core/images/logo_3.png' %}" alt="Logo sownet" class="img-fluid" style="max-height: 80px;">
-    </a>
+    {# INCLUSIÓN DEL NAVBAR #}
+    {% include 'core/navbar.html' %}
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-      data-bs-target="#menu-principal" aria-controls="menu-principal" 
-      aria-expanded="false" aria-label="Desplegar menú de navegación">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    {# Mensajes flash #}
+    {% if messages %}
+        <div class="container mt-4">
+            <div class="mb-3">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 
-    <div class="collapse navbar-collapse" id="menu-principal">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link text-white" href="{% url 'index' %}">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="{% url 'nosotros' %}">Nosotros</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="{% url 'contenido' %}">Contenido</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="{% url 'foro' %}">Foro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="{% url 'encuesta' %}">Encuesta</a>
-        </li>
-        {% if user.is_authenticated %}
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'logout-link' %}" style="color: blue; text-decoration: underline;">Cerrar sesión</a>
-</li>
-{% else %}
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'login' %}" style="color: blue; text-decoration: underline;">Iniciar sesión</a>
-</li>
-{% endif %}
-      </ul>
+    <div class="container mt-5 pt-5"> {# Añadido pt-5 para bajar el contenido debajo del navbar fijo #}
+
+        <div class="row text-center mt-5 justify-content-center"> {# Añadido justify-content-center para centrar #}
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Foro de Conversación</h5>
+                        <p class="card-text">Únete a discusiones significativas sobre salud mental, redes sociales y más.</p>
+                        <a href="{% url 'foro:topic_list' %}" class="btn btn-primary">Entrar al Foro</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <i class="fas fa-chart-pie fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Participa en Encuestas</h5>
+                        <p class="card-text">Comparte tu opinión y contribuye a la investigación sobre hábitos digitales.</p>
+                        <a href="{% url 'encuesta' %}" class="btn btn-success">Ir a la Encuesta</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <i class="fas fa-book-open fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">Contenido Educativo</h5>
+                        <p class="card-text">Accede a artículos y recursos para mejorar tu bienestar digital.</p>
+                        <a href="{% url 'contenido' %}">Explorar Contenido</a> {# Quitada la clase btn-info para que el texto sea link y no botón #}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Puedes añadir más contenido aquí #}
+
     </div>
-  </div>
-</nav>
+
+
+    {# Tu script Tawk.to #}
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/681ad679062127190b81ea35/1iqkdbipe';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
 
 
 <!-- CARRUSEL -->
-<div class="container" style="margin-top: 150px;">
+<div class="container" style="margin-top: 20px;">
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
     
     <!-- Indicadores -->
@@ -106,7 +133,7 @@
       <!-- Slide 1 con enlace -->
       <div class="carousel-item active position-relative">
         <img src="{% static 'core/images/correcto_2.jpeg' %}" class="d-block w-100" alt="slider 2">
-          <div class="position-absolute top-50 start-50 translate-middle text-center bg-dark bg-opacity-10 p-4 rounded">
+          <div class="position-absolute top-50 start-50 translate-middle text-center bg-dark bg-opacity-10 p-2 rounded">
     <h5 class="text-white">El impacto de las redes en la salud mental de los adolecentes.</h5>
     <p class="text-white">Lee más en el sitio de psicoactiva.</p>
     <a href="https://www.psicoactiva.com/blog/redes-sociales-y-salud-mental/" target="_blank" class="btn btn-primary">Ir</a>
@@ -172,7 +199,7 @@
           En un mundo cada vez más digital, es fundamental detenernos a reflexionar sobre cómo nos afecta lo que vemos, compartimos y sentimos en línea. Aquí encontrarás artículos, recursos, consejos y testimonios que buscan informar, acompañar y apoyar a quienes desean tener una relación más saludable con el mundo digital.
           
           </p>
-           <a href="#" class="btn btn-primary btn-lg">Leer mas</a>
+          
       </div>
     </div>
   </div>
@@ -186,7 +213,6 @@
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
     <div class="me-5 d-none d-lg-block">
-      <span>Get connected with us on social networks:</span>
     </div>
     <!-- Left -->
 
@@ -224,53 +250,31 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
+            <i class="fas fa-gem me-3"></i>Sowknet
           </h6>
           <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+            Web dedicada al apoyo contra los problemas mentales causados por el uso exesivo de las redes sociales
           </p>
         </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-reset text-white">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset text-white">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset text-white">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset text-white">Laravel</a>
-          </p>
-        </div>
-        <!-- Grid column -->
+       
 
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
+            Entradas recientes
           </h6>
           <p>
-            <a href="#!" class="text-reset text-white">Pricing</a>
+            <a href="#!" class="text-reset text-white">La dependencia a los likes</a>
           </p>
           <p>
-            <a href="#!" class="text-reset text-white">Settings</a>
+            <a href="#!" class="text-reset text-white">Un bienestar mental</a>
           </p>
           <p>
-            <a href="#!" class="text-reset text-white">Orders</a>
+            <a href="#!" class="text-reset text-white">Adiccion a las redes</a>
           </p>
           <p>
-            <a href="#!" class="text-reset text-white">Help</a>
+            <a href="#!" class="text-reset text-white">Ayudas</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -278,14 +282,13 @@
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
           <p>
             <i class="fas fa-envelope me-3"></i>
-            info@example.com
+            Sowknet_oficial@gmail.com
           </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          <p><i class="fas fa-phone me-3"></i> + 52 241 121 04 51</p>
+          <p><i class="fas fa-print me-3"></i> + 52 243 101 09 01</p>
         </div>
         <!-- Grid column -->
       </div>
@@ -296,8 +299,8 @@
 
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.15);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    © 2025 Copyright:
+    <a class="text-reset fw-bold text-white">Sowknet.com</a>
   </div>
   <!-- Copyright -->
 </footer>

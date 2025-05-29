@@ -17,7 +17,7 @@
     <style>
         body {
             background-color: #f8f9fa;
-            padding-top: 100px; /* Espacio para el navbar fijo */
+            padding-top: 100px;
         }
         .topic-card {
             background-color: white;
@@ -53,26 +53,25 @@
 </head>
 <body>
 
-    {% include 'core/navbar.html' %} 
+    {% include 'core/navbar.html' %}
 
     <div class="container mt-4">
         <h1 class="mb-4 text-center">{{ title }}</h1>
 
-        <div class="text-center mb-4">
-            {% if user.is_authenticated %}
-                <a href="{% url 'foro:create_topic' %}" class=""></a>
-            {% else %}
-                <p class="text-muted">Inicia sesión para crear un nuevo tema.</p>
-            {% endif %}
-        </div>
-
         {% if topics %}
+            <div class="text-center mb-4">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'foro:create_topic' %}" class="btn btn-success">Crear Nuevo Tema</a>
+                {% else %}
+                    <p class="text-muted">Inicia sesión para crear un nuevo tema.</p>
+                {% endif %}
+            </div>
+
             {% for topic in topics %}
                 <div class="topic-card">
                     <h3><a href="{% url 'foro:topic_detail' pk=topic.pk %}" class="text-decoration-none">{{ topic.title }}</a></h3>
                     <p class="topic-meta">
                         Por {{ topic.author.username }} el {{ topic.date_posted|date:"d M, Y" }}
-                        {# Contar comentarios #}
                         {% if topic.comments.count == 1 %}
                             (1 comentario)
                         {% else %}
@@ -96,23 +95,8 @@
         {% endif %}
     </div>
 
-    {# Tu script Tawk.to #}
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/681ad679062127190b81ea35/1iqkdbipe';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-
-
     <script src="{% static 'core/js/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static 'core/js/popper.min.js' %}"></script>
     <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
-
 </body>
 </html>

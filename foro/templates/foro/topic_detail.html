@@ -1,0 +1,94 @@
+{# myproject/foro/templates/foro/topic_list.html #}
+{% extends 'base.html' %} {# ¡AHORA EXTENDEMOS DE BASE.HTML! #}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+
+        .topic-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 25px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .topic-card:hover {
+            transform: translateY(-5px);
+        }
+        .topic-card h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .topic-meta {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        .topic-content {
+            line-height: 1.6;
+            color: #343a40;
+            max-height: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            color: #6c757d;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container"> {# Quitamos mt-5 pt-5 porque el padding-top ya está en el body de base.html #}
+    <h1 class="mb-4 text-center">{{ title }}</h1>
+
+    <div class="text-center mb-4">
+        {% if user.is_authenticated %}
+            <a href="{% url 'foro:create_topic' %}" class="btn btn-success btn-lg">
+                <i class="fas fa-plus-circle me-2"></i>Crear Nuevo Tema
+            </a>
+        {% else %}
+            <p class="text-muted">Inicia sesión para crear un nuevo tema.</p>
+        {% endif %}
+    </div>
+
+    {% if topics %}
+        <div class="row">
+            {% for topic in topics %}
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+                    <div class="topic-card w-100">
+                        <h3><a href="{% url 'foro:topic_detail' pk=topic.pk %}" class="text-decoration-none">{{ topic.title }}</a></h3>
+                        <p class="topic-meta">
+                            Por {{ topic.author.username }} el {{ topic.date_posted|date:"d M, Y" }}
+                            {% if topic.comments.count == 1 %}
+                                (1 comentario)
+                            {% else %}
+                                ({{ topic.comments.count }} comentarios)
+                            {% endif %}
+                        </p>
+                        <p class="topic-content">{{ topic.content|truncatechars:150 }}</p>
+                        <a href="{% url 'foro:topic_detail' pk=topic.pk %}" class="btn btn-primary btn-sm mt-3">Ver Tema Completo</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p class="lead">Aún no hay temas en el foro.</p>
+            {% if user.is_authenticated %}
+                <p>¡Sé el primero en iniciar una conversación!</p>
+                <a href="{% url 'foro:create_topic' %}" class="btn btn-success mt-3">Crear Nuevo Tema</a>
+            {% else %}
+                <p>Inicia sesión para ser el primero en iniciar una conversación.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

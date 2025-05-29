@@ -8,13 +8,14 @@ urlpatterns = [
 
     # Agregado: logout por enlace GET
     path('logout/', views.logout_view, name='logout-link'),
+    path('accounts/', include('accounts.urls')),
 
     path('nosotros/', views.nosotros, name='nosotros'),
     path('contenido/', views.contenido, name='contenido'),
     
     # Ambas rutas se mantienen como pediste
     path('foro/', views.foro, name='foro'),
-    path('foro/', include('foro.urls')),  # Se recomienda reorganizar esto, pero lo dejo como está
+    path('foro/', include('foro.urls')),  
 
     path('encuesta/', views.encuesta, name='encuesta'),
 ]

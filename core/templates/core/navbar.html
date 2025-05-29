@@ -1,0 +1,61 @@
+{# myproject/core/navbar.html #}
+{% load static %}
+
+<nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
+    <div class="container">
+        {# El logo debería dirigir a la página de inicio (index) #}
+        <a href="{% url 'index' %}" class="navbar-brand">
+            <img src="{% static 'core/images/logo_3.png' %}" alt="Logo sownet" class="img-fluid" style="max-height: 80px;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#menu-principal" aria-controls="menu-principal"
+          aria-expanded="false" aria-label="Desplegar menú de navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu-principal">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'nosotros' %}">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'contenido' %}">Contenido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'foro:topic_list' %}">Foro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'encuesta' %}">Encuesta</a>
+                </li>
+
+                {# Lógica para mostrar Perfil/Cerrar Sesión o Iniciar Sesión/Registrarse #}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        {# Enlace al perfil #}
+                        <a class="nav-link text-white" href="{% url 'profile' %}">Perfil ({{ user.username }})</a>
+                    </li>
+                    <li class="nav-item">
+                        {# CAMBIO AQUÍ: Usamos un formulario POST para cerrar sesión #}
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link text-white" style="text-decoration: none; border: none; background: none; cursor: pointer;">
+                                Cerrar sesión
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'register' %}">Registrarse</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
